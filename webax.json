@@ -1,0 +1,23 @@
+{
+  "build": {
+    "output_dir": "dist",
+    "bundle": true,
+    "minify": true
+  },
+  "development": {
+    "server": {
+      "port": 8080,
+      "https": true
+    }
+  },
+  "distribution": {
+    "channels": ["stable", "beta", "dev"],
+    "auto_update": true
+  },
+  "integration": {
+    "comlink": {
+      "expose": ["api.getData", "api.sendData"],
+      "connect": ["storage-service", "auth-service"]
+    }
+  }
+}

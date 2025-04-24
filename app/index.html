@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My WebAX App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4285f4">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>My WebAX App</h1>
+    </header>
+    <main>
+      <p>Welcome to My WebAX App!</p>
+      <button id="load-data">Load Data</button>
+      <div id="data-container"></div>
+    </main>
+    <footer>
+      <p>Powered by WebAX</p>
+    </footer>
+  </div>
+  
+  <script type="module" src="index.js"></script>
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service worker registered:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
